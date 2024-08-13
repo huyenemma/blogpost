@@ -8,7 +8,7 @@ Despite its power, Grover's search algorithm faces practical limitations due to 
 
 ## Implementing Grover’s Search with Quantum Error Detection
 
-Recently, Bibek Pokharel and Daniel A. Lidar [3](#References) have published a report on the successful implementation of Grover's search using quantum error detection (QED) codes and suppression. Inspired by their approach, in this blog post, I will implement the Grover search circuit for a 2-bit number on the Helmi quantum computer. This approach focuses on leveraging the specific layout of Helmi QPU chip to avoid the need for SWAP gates, which are often a source of errors in quantum superconducting computer. This means that the Helmi quantum computer can be used to search for a number in the set $\{0, 1, 2, 3\}$ with just two steps.
+Recently, Bibek Pokharel and Daniel A. Lidar [3](#References) have published a report on the successful implementation of Grover's search using quantum error detection (QED) codes and suppression. Inspired by their approach, in this blog post, I will implement the Grover search circuit for a 2-bit number on the Helmi quantum computer. This approach focuses on leveraging the specific layout of Helmi QPU chip to avoid the need for SWAP gates, which are often a source of errors in quantum superconducting computer. This means that the Helmi quantum computer can be used to search for a number in the unsorted set of $\{0, 1, 2, 3\}$ with just two steps.
 
 In this implementation of Grover search, the [[4,2,2]] quantum error-detecting code is employed, utilizing a set of fault-tolerant gates to enhance the system's robustness [4](#References). These gates help mitigate the effects of quantum noise and operational imperfections, ensuring a more reliable and accurate execution of the algorithm. By incorporating these fault-tolerant techniques, we move closer to realizing the potential of theoretical quantum algorithms in practical quantum computing applications.
 
@@ -37,7 +37,7 @@ The number of iterations required to find the correct answer is proportional to 
 
 The [[4, 2, 2]] code is a quantum error-detecting code that encodes 2 logical qubits into 4 physical qubits [5](#References). This encoding allows us to detect errors, bit flips or phase flips, using specific syndromes. The syndromes in this quantum error detection code are $XXXX$ and $ZZZZ$ [6](#References).
 
-In our implementation, the Grover search circuit is encoded using fault-tolerant gates. Fault-tolerant gates are specifically designed to prevent errors from propagating through the quantum circuit, making the entire computation more robust. See [this jupyternotebook](link) to know more about the implementation construction.
+In this implementation, the Grover search circuit is encoded using fault-tolerant gates. Fault-tolerant gates are specifically designed to prevent errors from propagating through the quantum circuit, making the entire computation more robust. See [this jupyternotebook](link) to know more about the implementation construction.
 
 <div style="text-align: center;">
     <figure style="display: inline-block; text-align: left;">
@@ -80,14 +80,27 @@ To compare the performance of the encoded and unencoded versions of the circuit,
 
 Although the [[4, 2, 2]] code provides syndromes $XXXX$ and $ZZZZ$ to detect errors, the Helmi QPU's limitation of 5 qubits prevents us from adding the necessary ancilla qubits for syndrome measurements. Despite this, the encoded circuit, utilizing fault-tolerant gate sets, still demonstrates improved performance compared to the unencoded version.
 
-The results from the Helmi quantum computer show that the overall accuracy is below 50% due to the inherent noise and limitations of the hardware. However, the encoded version significantly outperforms the unencoded version, highlighting the benefits of incorporating error-detecting codes and fault-tolerant gates [7](#References), even without full error correction.
+Running the circuit on Helmi Simulator (simulator with helmi QPU noise profile), we obtain the expected result that the encoded version is better than the unencoded (Fig 5).
+
+<div style="text-align: center;">
+    <figure style="display: inline-block; text-align: left;">
+        <img src="img/fake_helmi_accuracy.png" alt="Results of Grover's search on Helmi">
+        <figcaption>
+            <p>
+                <em> Figure 5: The accuracy of Grover's Search algorithm running on Helmi Simulator with the encoded version (blue) and the unencoded version (orange).</em>
+            </p>
+        </figcaption>
+    </figure>
+</div>
+
+The results from the Helmi QPU indicate that the overall accuracy is below 50%, primarily due to the inherent noise and limitations of the hardware. Despite this, the encoded version outperforms the unencoded version (Fig. 6), demonstrating the advantages of incorporating error-detecting codes and fault-tolerant gates [7](#References), even in the absence of full error correction. However, it is important to note that results may vary, particularly in real hardware, as the calibration of the Helmi QPU can fluctuate over time.
 
 <div style="text-align: center;">
     <figure style="display: inline-block; text-align: left;">
         <img src="img/helmi_result.png" alt="Results of Grover's search on Helmi">
         <figcaption>
             <p>
-                <em> Figure 5: The accuracy of Grover's Search algorithm running on Helmi with the encoded version (left) and the unencoded version (right).</em>
+                <em> Figure 6: The accuracy of Grover's Search algorithm running on Helmi with the encoded version (left) and the unencoded version (right).</em>
             </p>
         </figcaption>
     </figure>
@@ -98,7 +111,7 @@ The results from the Helmi quantum computer show that the overall accuracy is be
         <img src="img/bar_helmi.png" alt="Results of Grover's search on Helmi">
         <figcaption>
             <p>
-                <em> Figure 6: Compare the performance of encoded and unencoded version.</em>
+                <em> Figure 7: Compare the performance of encoded and unencoded version.</em>
             </p>
         </figcaption>
     </figure>
