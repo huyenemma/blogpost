@@ -80,19 +80,6 @@ To compare the performance of the encoded and unencoded versions of the circuit,
 
 Although the [[4, 2, 2]] code provides syndromes $XXXX$ and $ZZZZ$ to detect errors, the Helmi QPU's limitation of 5 qubits prevents us from adding the necessary ancilla qubits for syndrome measurements. Despite this, the encoded circuit, utilizing fault-tolerant gate sets, still demonstrates improved performance compared to the unencoded version.
 
-Running the circuit on Helmi Simulator (simulator with helmi QPU noise profile), we obtain the expected result that the encoded version is better than the unencoded (Fig 5).
-
-<div style="text-align: center;">
-    <figure style="display: inline-block; text-align: left;">
-        <img src="img/fake_helmi_accuracy.png" alt="Results of Grover's search on Helmi">
-        <figcaption>
-            <p>
-                <em> Figure 5: The accuracy of Grover's Search algorithm running on Helmi Simulator with the encoded version (blue) and the unencoded version (orange).</em>
-            </p>
-        </figcaption>
-    </figure>
-</div>
-
 The results from the Helmi QPU indicate that the overall accuracy is below 50%, primarily due to the inherent noise and limitations of the hardware. Despite this, the encoded version outperforms the unencoded version (Fig. 6), demonstrating the advantages of incorporating error-detecting codes and fault-tolerant gates [7](#References), even in the absence of full error correction. However, it is important to note that results may vary, particularly in real hardware, as the calibration of the Helmi QPU can fluctuate over time.
 
 <div style="text-align: center;">
@@ -100,7 +87,7 @@ The results from the Helmi QPU indicate that the overall accuracy is below 50%, 
         <img src="img/helmi_result.png" alt="Results of Grover's search on Helmi">
         <figcaption>
             <p>
-                <em> Figure 6: The accuracy of Grover's Search algorithm running on Helmi with the encoded version (left) and the unencoded version (right).</em>
+                <em> Figure 5: The accuracy of Grover's Search algorithm running on Helmi with the encoded version (left) and the unencoded version (right).</em>
             </p>
         </figcaption>
     </figure>
@@ -111,7 +98,7 @@ The results from the Helmi QPU indicate that the overall accuracy is below 50%, 
         <img src="img/bar_helmi.png" alt="Results of Grover's search on Helmi">
         <figcaption>
             <p>
-                <em> Figure 7: Compare the performance of encoded and unencoded version.</em>
+                <em> Figure 6: Compare the performance of encoded and unencoded version.</em>
             </p>
         </figcaption>
     </figure>
