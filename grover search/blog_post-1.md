@@ -37,7 +37,7 @@ The number of iterations required to find the correct answer is proportional to 
 
 The [[4, 2, 2]] code is a quantum error-detecting code that encodes 2 logical qubits into 4 physical qubits [5](#References). This encoding allows us to detect errors, bit flips or phase flips, using specific syndromes. The syndromes in this quantum error detection code are $XXXX$ and $ZZZZ$ [6](#References).
 
-In this implementation, the Grover search circuit is encoded using fault-tolerant gates. Fault-tolerant gates are specifically designed to prevent errors from propagating through the quantum circuit, making the entire computation more robust. See [this jupyternotebook](link) to know more about the implementation construction.
+In this implementation, the Grover search circuit is encoded using fault-tolerant gates. Fault-tolerant gates are specifically designed to prevent errors from propagating through the quantum circuit, making the entire computation more robust. See [this jupyternotebook](https://github.com/huyenemma/blogpost/blob/main/Grover_Search_error_detecting.ipynb) to know more about the implementation construction.
 
 <div style="text-align: center;">
     <figure style="display: inline-block; text-align: left;">
