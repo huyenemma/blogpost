@@ -1,4 +1,4 @@
-from qiskit import QuantumCircuit
+from qiskit import QuantumCircuit, QuantumRegister
 import numpy as np
 
 
@@ -123,29 +123,34 @@ def decoding(circ):
 
 def add_syndrome_422(circ):
    
+    circ.add_register(QuantumRegister(1, 'ancilla_x'))
+    circ.add_register(QuantumRegister(1, 'ancilla_z'))
     # measure ZZZZ
     circ.cx(0, 4)
     circ.cx(1, 4)
     circ.cx(2, 4)
     circ.cx(3, 4)
 
+    circ.barrier()
     # measure XXXX
     circ.h(0)
-    circ.cx(0, 4)
+    circ.cx(0, 5)
     circ.h(0)
-
+    
     circ.h(1)
-    circ.cx(1, 4)
+    circ.cx(1, 5)
     circ.h(1)
-
+    
     circ.h(2)
-    circ.cx(2, 4)
+    circ.cx(2, 5)
     circ.h(2)
-
+    
     circ.h(3)
-    circ.cx(3, 4)
+    circ.cx(3, 5)
     circ.h(3)
 
+    circ.barrier()
+    
     return circ
 
 
@@ -239,7 +244,7 @@ def decoding_2(circ):
     circ.h(0)
     return circ
 
-def create_grover_enc_circuit(bitstring, enc_ver=1):
+def create_grover_enc_circuit(bitstring, enc_ver=1, add_syndrome=False):
   
     circ = QuantumCircuit(4)
     if enc_ver == 2: 
@@ -250,6 +255,9 @@ def create_grover_enc_circuit(bitstring, enc_ver=1):
     circ.barrier()
     circ = oracle(circ, bitstring)
     circ = inversion(circ)
+    
+    if add_syndrome:
+        circ = add_syndrome_422(circ)
     
     if enc_ver == 2: 
         circ = decoding_2(circ)
