@@ -1,4 +1,17 @@
-# Quadratic Speedup Search Algorithm With [[4, 2, 2]] Quantum Error-Detecting code 
+---
+title: 'Quadratic Speedup Search Algorithm With [[4, 2, 2]] Quantum Error Detecting code'
+date: 2024-08-20
+permalink: /_posts/2024-08-20-Grover-Error-Detecting/
+header:
+published: true
+author: Huyen Do
+layout: single
+tags:
+  - Helmi
+  - QEC 
+  - Grover Search
+  - Algorithm
+---
 
 Grover's Search Algorithm [[1]](#references), introduced by Lov Grover in 1996, is one of the most important quantum algorithms due to its ability to search an unsorted database significantly faster than any classical algorithms. In classical computing, searching for a specific item among $N$ unsorted elements requires $O(N)$ steps. However, Grover's algorithm can achieve this in just $O(\sqrt{N})$ steps, providing a quadratic speedup. This efficiency is obtained by the unique properties of quantum computing: superposition and entanglement. These properties allow the algorithm to explore multiple possibilities simultaneously, therefore reducing the number of iterations needed to find the target item.
 
@@ -24,7 +37,7 @@ The number of iterations required to find the correct answer is proportional to 
 
 <div style="text-align: center;">
     <figure style="display: inline-block; text-align: left;">
-        <img src="img/grover_2bit_example.png" alt="Example of Grover's 2-bit implementation">
+        <img src="/assets/images/grover/grover_2bit_example.png" alt="Example of Grover's 2-bit implementation">
         <figcaption>
             <p>
                 <em> Figure 1: Grover's Search Algorithm for a 2-bit number with the oracle marking the state '01'. Since this is a search for a 2-bit number, only one iteration of the amplitude amplification step is required. </em>
@@ -49,7 +62,7 @@ In this implementation, the Grover search circuit is encoded using fault-toleran
 
 <div style="text-align: center;">
     <figure style="display: inline-block; text-align: left;">
-        <img src="img/encode_v1.png" alt="Example of Grover's 2-bit implementation with [[4, 2, 2]] code">
+        <img src="/assets/images/grover/encode_v1.png" alt="Example of Grover's 2-bit implementation with [[4, 2, 2]] code">
         <figcaption>
             <p>
                 <em>Figure 2: Implementation of Grover's Search Algorithm using the [[4, 2, 2]] quantum error-detecting code.</em>
@@ -62,7 +75,7 @@ To validate the correctness of the encoded circuit, we ran the algorithm on an i
 
 <div style="text-align: center;">
     <figure style="display: inline-block; text-align: left;">
-        <img src="img/simulator_enc.png" alt="Simulation results for Grover's Search with [[4, 2, 2]] code">
+        <img src="/assets/images/grover/simulator_enc.png" alt="Simulation results for Grover's Search with [[4, 2, 2]] code">
         <figcaption>
             <p>
                 <em>Figure 3: The accuracy of Grover's Search Algorithm for different 2-bit numbers marked in the oracle state on a simulator.</em>
@@ -77,7 +90,7 @@ To compare the performance of the encoded and unencoded versions of the circuit,
 
 <div style="text-align: center;">
     <figure style="display: inline-block; text-align: left;">
-        <img src="img/unenc.png" alt="Unencoded Grover's 2-bit implementation">
+        <img src="/assets/images/grover/unenc.png" alt="Unencoded Grover's 2-bit implementation">
         <figcaption>
             <p>
                 <em>Figure 4: Unencoded Grover's search circuit for a 2-bit number</em>
@@ -92,7 +105,7 @@ The results from the Helmi QPU indicate that the overall accuracy is below 50%, 
 
 <div style="text-align: center;">
     <figure style="display: inline-block; text-align: left;">
-        <img src="img/helmi_result.png" alt="Results of Grover's search on Helmi">
+        <img src="/assets/images/grover/helmi_result.png" alt="Results of Grover's search on Helmi">
         <figcaption>
             <p>
                 <em> Figure 5: The accuracy of Grover's Search algorithm running on Helmi with the unencoded version (left) and the encoded version (right).</em>
@@ -103,7 +116,7 @@ The results from the Helmi QPU indicate that the overall accuracy is below 50%, 
 
 <div style="text-align: center;">
     <figure style="display: inline-block; text-align: left;">
-        <img src="img/bar_helmi.png" alt="Results of Grover's search on Helmi">
+        <img src="/assets/images/grover/bar_helmi.png" alt="Results of Grover's search on Helmi">
         <figcaption>
             <p>
                 <em> Figure 6: Compare the performance of encoded and unencoded version.</em>
@@ -132,3 +145,7 @@ The results demonstrate that encoding Grover’s Search Algorithm with the [[4, 
 8. A. D. Corcoles et al., "Fault-tolerant quantum error detection," Sci. Adv., vol. 3, no. 7, Jul. 2017. Available: https://www.science.org/doi/epdf/10.1126/sciadv.1701074
 9. S. J. Devitt, W. J. Munro, and K. Nemoto, "Quantum error correction for beginners," Rep. Prog. Phys., vol. 76, no. 7, p. 076001, Jun. 2013, doi: 10.1088/0034-4885/76/7/076001. Available: https://arxiv.org/pdf/0905.2794
 10. Z. Cai, R. Babbush, S. C. Benjamin, S. Endo, W. J. Huggins, Y. Li, J. R. McClean, and T. E. O’Brien, "Quantum error mitigation," Rev. Mod. Phys., vol. 95, no. 4, p. 045005, Dec. 2023, doi: 10.1103/revmodphys.95.045005. Available: https://arxiv.org/pdf/2210.00921
+
+## Give feedback
+
+Feedback is greatly appreciated! You can send feedback directly to [fiqci-feedback@postit.csc.fi](mailto:fiqci-feedback@postit.csc.fi).
